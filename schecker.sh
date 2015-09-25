@@ -47,6 +47,8 @@ Options:
  -s2, --sha256	use SHA256 algorithm
  -s5, --sha512	use SHA512 algorithm
 
+ -h,  --help    get help
+
 Commands:
 
  -f		specify filename
@@ -62,7 +64,7 @@ usage()
 {
     echo "schecker (S Checker) v1.0.1 ©Copyright (C) 2015 Albert Aparicio
 
-Usage: schecker [[-m]|[-s1]|[-s2]|[-s5]] [-f filename] [-c checksum]
+Usage: schecker [[[-m]|[-s1]|[-s2]|[-s5]] [-f filename] [-c checksum]|[-h]]
 "
 }
 
