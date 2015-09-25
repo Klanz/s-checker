@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# v1.0.1
+# v1.1
 #	
-# S Checker - Multi-algorithm checksum checker
+# S Checker - Multi-algorithm checksum checker and ISO against disk comparator
 #
 # ©Copyright (C) 2015 Albert Aparicio
 
@@ -17,7 +17,7 @@ press_enter()
 }
 
 get_help(){
-echo "schecker (S Checker) v1.0.1 ©Copyright (C) 2015 Albert Aparicio
+echo "schecker (S Checker) v1.1 ©Copyright (C) 2015 Albert Aparicio
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -36,11 +36,17 @@ S Checker source code available from albert.aparicio.isarn@gmail.com.
 Use PGP encryption on the emails, with public signature 0xE9920BEE.
 
 -------------------------------------------------------------------
+This program has two modes:
+ · Checksum checking
+ · Compare disk against ISO image
+
 Supported algorithms: MD5, SHA1, SHA256, SHA512
 
-Syntax: schecker [algorithm] [-f filename] [-c checksum]
+Syntax: schecker [mode|algorithm] [-f filename] [-c checksum]
 
 Options:
+
+ -i,  --iso     compare disk against ISO image
 
  -m,  --md5	use MD5 algorithm
  -s1, --sha1	use SHA1 algorithm
@@ -53,18 +59,21 @@ Commands:
 
  -f		specify filename
  -c		specify alleged file checksum
+ -d,  --device	specify disk device (/dev/DISK)
 
 Examples:
 
  -m -f [file] -c [checksum]	check MD5 hash
- --sha1 -f [file] -c [checksum]	check SHA1 hash"
+ --sha1 -f [file] -c [checksum]	check SHA1 hash
+ -i -f image.iso -d /dev/sr0    compare disk in /dev/sr0 against image.iso image"
+ 
 }
 
 usage()
 {
-    echo "schecker (S Checker) v1.0.1 ©Copyright (C) 2015 Albert Aparicio
+    echo "schecker (S Checker) v1.1 ©Copyright (C) 2015 Albert Aparicio
 
-Usage: schecker [[[-m]|[-s1]|[-s2]|[-s5]] [-f filename] [-c checksum]|[-h]]
+Usage: schecker [[[-m]|[-s1]|[-s2]|[-s5]|[-i]] [-f filename] [[-c checksum]|[-d device]]|[-h]]
 "
 }
 
@@ -97,34 +106,58 @@ sha512_sum(){
      echo "!!--Checksum Mismatch--!!"
    fi
 }
+iso_image(){
+   if [ -n "$( cmp --print-bytes --verbose $device $filename  )" ]; then
+     echo "!!--Disk Not Matched--!!"
+   else
+     echo "<---Disk Matched ISO--->"
+   fi
+}
    
 
 show_data(){
-#echo ""
-clear
-# ASCII Art -> ANSI Shadow (http://patorjk.com/software/taag/)
-echo "███████╗     ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗███████╗██████╗ 
+	#echo ""
+	clear
+	# ASCII Art -> ANSI Shadow (http://patorjk.com/software/taag/)
+	echo "███████╗     ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗███████╗██████╗ 
 ██╔════╝    ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔════╝██╔══██╗
 ███████╗    ██║     ███████║█████╗  ██║     █████╔╝ █████╗  ██████╔╝
 ╚════██║    ██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ ██╔══╝  ██╔══██╗
 ███████║    ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗███████╗██║  ██║
 ╚══════╝     ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
                                                                     "
-#sleep 0.5
-#press_enter
-echo "S Checker v1.0.1 ©Copyright (C) 2015 Albert Aparicio
+	#sleep 0.5
+	#press_enter
+	echo "S Checker v1.1 ©Copyright (C) 2015 Albert Aparicio"
+}
+
+sum_data(){
+	echo "
+Mode: Checksum checking
 
 Algorithm: $algorithm
 File: $filename
 Checksum: $checksum
 
-Computing checksum
+Computing checksum...
 "
 }
 
-algorithm=
+iso_data(){
+	echo "
+Mode: Compare disk against ISO image
+
+ISO File: $filename
+Device: $device
+
+Comparing...
+"
+}
+
+mode=
 checksum=
 filename=
+device=
 
 # Display usage if no arguments passed
 [ $# -eq 0 ] && { usage; exit 1; }
@@ -134,16 +167,21 @@ while [ "$1" != "" ]; do
         -f | --file )           shift
                                 filename=$1
                                 ;;
-        -m | --md5 )    	algorithm=MD5
+        -i | --iso )    	mode=ISO
                                 ;;
-        -s1 | --sha1 )    	algorithm=SHA1
+        -m | --md5 )    	mode=MD5
                                 ;;
-        -s2 | --sha256 )    	algorithm=SHA256
+        -s1 | --sha1 )    	mode=SHA1
                                 ;;
-        -s5 | --sha512 )    	algorithm=SHA512
+        -s2 | --sha256 )    	mode=SHA256
+                                ;;
+        -s5 | --sha512 )    	mode=SHA512
                                 ;;
         -c | --checksum )    	shift
 				checksum=$1
+                                ;;
+        -d | --device )    	shift
+				device=$1
                                 ;;
         -h | --help )           get_help
                                 exit
@@ -156,15 +194,17 @@ done
 
 echo ""
 
-case $algorithm in
+case $mode in
 
-	MD5 ) show_data;md5_sum;;
+	ISO ) show_data;iso_data;iso_image;;
 
-	SHA1 ) show_data;sha1_sum;;
+	MD5 ) show_data;sum_data;md5_sum;;
 
-	SHA256 ) show_data;sha256_sum;;
+	SHA1 ) show_data;sum_data;sha1_sum;;
 
-	SHA512 ) show_data;sha512_sum;;
+	SHA256 ) show_data;sum_data;sha256_sum;;
+
+	SHA512 ) show_data;sum_data;sha512_sum;;
 
 esac
 
