@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# v1.1
+# v1.0.1
 #	
 # S Checker - Multi-algorithm checksum checker
 #
