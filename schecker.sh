@@ -6,8 +6,6 @@
 #
 # ©Copyright (C) 2015 Albert Aparicio
 
-# TODO for v1.1: Implement compare disk against ISO -> https://gist.github.com/noromanba/5026945
-# cmp --print-bytes --verbose /dev/DRIVE image.iso
 
 press_enter()
 {
@@ -37,8 +35,8 @@ Use PGP encryption on the emails, with public signature 0xE9920BEE.
 
 -------------------------------------------------------------------
 This program has two modes:
- · Checksum checking
  · Compare disk against ISO image
+ · Checksum checking
 
 Supported algorithms: MD5, SHA1, SHA256, SHA512
 

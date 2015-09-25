@@ -6,11 +6,11 @@ S Checker allows you to easily check if a file of yours matches its provided che
 	- SHA1
 	- SHA256
 	- SHA512
+- Check ISO image from disk
 - *Coming soon*
 	- CRC algorithm
-	- Check ISO image from disk
 ##How to get
-S Checker is available from the [**Releases**](https://github.com/Klanz/s-checker/releases) page in this GitHub repo.
+S Checker is available from the [**Releases**](https://github.com/albertaparicio/s-checker/releases) page in this GitHub repo.
 
 Currently it is only available as a Bash script or in binary version for x64 Linux systems.
 ##Usage
