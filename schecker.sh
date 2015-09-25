@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # v1.1
-#	HELLOOOOOO!!!!
+#	
 # S Checker - Multi-algorithm checksum checker
 #
 # ©Copyright (C) 2015 Albert Aparicio
