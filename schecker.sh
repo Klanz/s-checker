@@ -107,10 +107,11 @@ sha512_sum(){
    fi
 }
 iso_image(){
-   if [ -n "$( cmp --print-bytes --verbose $device $filename  )" ]; then
-     echo "!!--Disk Not Matched--!!"
-   else
+#   if [ -z "$( cmp --print-bytes --verbose $device $filename  )" ]; then
+   if [ -z "$( cmp $device $filename  )" ]; then
      echo "<---Disk Matched ISO--->"
+   else
+     echo "!!--Disk Not Matched--!!"
    fi
 }
    
