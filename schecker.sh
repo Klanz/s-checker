@@ -6,14 +6,6 @@
 #
 # ©Copyright (C) 2015 Albert Aparicio
 
-
-press_enter()
-{
-    echo "Press Enter to continue"
-    read
-    #clear
-}
-
 get_help(){
 echo "schecker (S Checker) v1.1.1 ©Copyright (C) 2015 Albert Aparicio
 
@@ -113,7 +105,6 @@ sha512_sum(){
    fi
 }
 iso_image(){
-#   if [ -z "$( cmp --print-bytes --verbose $device $filename  )" ]; then
    if [ -z "$( cmp $device $filename  )" ]; then
      echo "<---Disk Matched ISO--->"
      exit 0
@@ -125,7 +116,6 @@ iso_image(){
    
 
 show_data(){
-	#echo ""
 	clear
 	# ASCII Art -> ANSI Shadow (http://patorjk.com/software/taag/)
 	echo "███████╗     ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗███████╗██████╗ 
@@ -135,8 +125,6 @@ show_data(){
 ███████║    ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗███████╗██║  ██║
 ╚══════╝     ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
                                                                     "
-	#sleep 0.5
-	#press_enter
 	echo "S Checker v1.1.1 ©Copyright (C) 2015 Albert Aparicio"
 }
 
@@ -216,17 +204,3 @@ case $mode in
 	SHA512 ) show_data;sum_data;sha512_sum;;
 
 esac
-
-# MD5		1b4d8861a6897ba53ea86eb54985d16b
-# SHA1		08d05d1acaf574156a4d389e7f9afe5514a35e88
-# SHA256	7be17976a21d2de0e9eb031e3e20a5cf54a817647bb9e4a5dc4dc87d6253eb75
-# SHA512	a09ecba88fc2fa5be5231dd8b540bf5e12f52ad501091d16796f6f5df8f242c8023193f12c272547cd0fae9a55f08e69aeda04e2021c318d94276288a81b0654
-
-# Dummy sums
-
-# MD5		1b4d8861a6897aa53ea86eb54985d16b
-# SHA1		08d05d1acaf574151a4d389e7f9afe5514a35e88
-# SHA256	7be17976a21d2de0b9eb031e3e20a5cf54a817647bb9e4a5dc4dc87d6253eb75
-# SHA512	a09ecba88fc2fa5be5231dd8b540bf5e12f52bd501091d16796f6f5df8f242c8023193f12c272547cd0fae9a55f08e69aeda04e2021c318d94276288a81b0654
-
-
