@@ -1,5 +1,5 @@
 # S Checker
-S Checker allows you to easily check if a file of yours matches its provided checksum. It does so by combining the existing checksum utilities in a Linux OS with an easy command line interface.
+S Checker allows you to easily check if a file of yours matches its provided checksum. It does so by combining the existing checksum computing utilities in a GNU/Linux OS with an easy command line interface.
 ##Features
 - Multiple checksum algorithms
 	- MD5
