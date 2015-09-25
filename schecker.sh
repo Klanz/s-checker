@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# v1.1
+# v1.1.1
 #	
 # S Checker - Multi-algorithm checksum checker and ISO against disk comparator
 #
@@ -15,7 +15,7 @@ press_enter()
 }
 
 get_help(){
-echo "schecker (S Checker) v1.1 ©Copyright (C) 2015 Albert Aparicio
+echo "schecker (S Checker) v1.1.1 ©Copyright (C) 2015 Albert Aparicio
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -69,7 +69,7 @@ Examples:
 
 usage()
 {
-    echo "schecker (S Checker) v1.1 ©Copyright (C) 2015 Albert Aparicio
+    echo "schecker (S Checker) v1.1.1 ©Copyright (C) 2015 Albert Aparicio
 
 Usage: schecker [[[-m]|[-s1]|[-s2]|[-s5]|[-i]] [-f filename] [[-c checksum]|[-d device]]|[-h]]
 "
@@ -78,38 +78,48 @@ Usage: schecker [[[-m]|[-s1]|[-s2]|[-s5]|[-i]] [-f filename] [[-c checksum]|[-d 
 md5_sum(){
    if [ -n "$( md5sum $filename | grep $checksum )" ]; then
      echo "<---Checksum Match--->"
+     exit 0
    else
      echo "!!--Checksum Mismatch--!!"
+     exit 0
    fi
 }
 
 sha1_sum(){
    if [ -n "$( sha1sum $filename | grep $checksum )" ]; then
      echo "<---Checksum Match--->"
+     exit 0
    else
      echo "!!--Checksum Mismatch--!!"
+     exit 0
    fi
 }
 sha256_sum(){
    if [ -n "$( sha256sum $filename | grep $checksum )" ]; then
      echo "<---Checksum Match--->"
+     exit 0
    else
      echo "!!--Checksum Mismatch--!!"
+     exit 0
    fi
 }
 sha512_sum(){
    if [ -n "$( sha512sum $filename | grep $checksum )" ]; then
      echo "<---Checksum Match--->"
+     exit 0
    else
      echo "!!--Checksum Mismatch--!!"
+     exit 0
    fi
 }
 iso_image(){
 #   if [ -z "$( cmp --print-bytes --verbose $device $filename  )" ]; then
    if [ -z "$( cmp $device $filename  )" ]; then
      echo "<---Disk Matched ISO--->"
+     exit 0
    else
      echo "!!--Disk Not Matched--!!"
+     exit 0
    fi
 }
    
@@ -127,7 +137,7 @@ show_data(){
                                                                     "
 	#sleep 0.5
 	#press_enter
-	echo "S Checker v1.1 ©Copyright (C) 2015 Albert Aparicio"
+	echo "S Checker v1.1.1 ©Copyright (C) 2015 Albert Aparicio"
 }
 
 sum_data(){
@@ -183,7 +193,7 @@ while [ "$1" != "" ]; do
 				device=$1
                                 ;;
         -h | --help )           get_help
-                                exit
+                                exit 0
                                 ;;
         * )                     usage
                                 exit 1
