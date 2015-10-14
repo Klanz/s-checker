@@ -9,7 +9,8 @@ S Checker allows you to easily check if a file of yours matches its provided che
 - Check ISO image from disk
 - *Coming soon*
 	- CRC algorithm
-##How to get
+	
+##How to get S Checker
 S Checker is available from the [**Releases**](https://github.com/albertaparicio/s-checker/releases) page in this GitHub repo.
 
 Currently it is only available as a Bash script or in binary version for x64 Linux systems.
