@@ -15,7 +15,9 @@ S Checker is available from the [**Releases**](https://github.com/albertaparicio
 
 Currently it is only available as a Bash script or in binary version for x64 Linux systems.
 ##Usage
-S Checker is run from the command line, first specifying the algorithm or the program option, then inputting the file and then, the provided checksum.
+S Checker is run from the command line, first specifying the algorithm or the program option, then inputting the file and then, the provided checksum or filename:
+
+`Usage: schecker [[[-m]|[-s1]|[-s2]|[-s5]|[-i]] [-f filename] [[-c checksum]|[-d device]]|[-h]]`
 
 For full usage information, type 
 `schecker -h` or `schecker --help`
