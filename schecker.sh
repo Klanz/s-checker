@@ -5,6 +5,7 @@
 # S Checker - Multi-algorithm checksum checker and ISO against disk comparator
 #
 # ©Copyright (C) 2015 Albert Aparicio
+# TODO: Compare two files
 
 get_help(){
 echo "schecker (S Checker) v1.1.1 ©Copyright (C) 2015 Albert Aparicio
