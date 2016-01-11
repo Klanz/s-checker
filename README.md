@@ -7,13 +7,11 @@ S Checker allows you to easily check if a file of yours matches its provided che
 	- SHA256
 	- SHA512
 - Check ISO image from disk
-- *Coming soon*
-	- CRC algorithm
 	
 ##How to get S Checker
 S Checker is available from the [**Releases**](https://github.com/albertaparicio/s-checker/releases) page in this GitHub repo.
 
-Currently it is only available as a Bash script or in binary version for x64 Linux systems.
+Currently it is only available as a Bash script or in binary version for x64 GNU/Linux systems.
 ##Usage
 S Checker is run from the command line, first specifying the algorithm or the program option, then inputting the file and then, the provided checksum or filename:
 
