@@ -1,0 +1,73 @@
+#!/bin/bash
+
+md5_sum(){
+   if [ -n "$( md5sum $filename | grep $checksum )" ]; then
+     echo "Checksum Match"
+   else
+     echo "Checksum Mismatch"
+   fi
+}
+
+sha1_sum(){
+return
+}
+
+sha256_sum(){
+return
+}
+
+sha512_sum(){
+return
+}
+
+algorithm=
+checksum=
+filename=
+
+clear
+
+echo "ALBERT CHECKSUM CHECKER
+
+Choose option:
+
+m,M - Use MD5 algorithm
+1   - Use SHA-1 algorithm
+2   - Use SHA-256 algorithm
+5   - Use SHA-512 algorithm
+
+q,Q - Exit
+"
+
+echo -n "Enter algorithm: "
+read algorithm
+echo ""
+
+echo -n "Enter filename: "
+read filename
+echo ""
+
+echo -n "Enter checksum: "
+read checksum
+echo ""
+
+case $algorithm in
+
+	m|M) echo "MD5 Algorithm chosen"; echo ""; md5_sum;;
+
+
+
+	1 ) echo "SHA1";;
+
+
+
+	2 ) echo "SHA256";;
+
+
+
+	5 ) echo "SHA256";;
+
+
+
+	q|Q ) echo "Exiting...";echo""; exit 0;;
+	* ) echo "Please enter one of the available algorithms";;
+esac

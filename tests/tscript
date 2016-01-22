@@ -1,0 +1,37 @@
+#!/bin/bash
+
+option=
+algorithm=
+
+echo "Menu
+	1
+	2	
+	3
+
+	q"
+
+echo -n "Enter option: "
+read option
+echo ""
+
+case $option in
+
+1) echo "2nd level options
+		4
+		5
+		6"
+echo -n "choose 2nd level options: "
+read algorithm
+echo ""
+  case $algorithm in
+	4) echo "option 4" ;;
+	5) echo "option 5" ;;
+	6) echo "option 6" ;;
+   esac	
+;;
+2) echo "option 2" ;;
+3) echo "option 3" ;;
+q) exit 0 ;;
+*) echo "input 1,2,3 or q" ;;
+esac
+

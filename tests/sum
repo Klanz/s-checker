@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+
+
+SUM=1b4d8861a6897ba53ea86eb54985d16b
+
+if [ -n "$( md5sum html_test.html | grep $SUM )" ]; then
+echo "md5=$SUM
+Checksum correct"
+fi
+
+exit 0
+#test -n "$(md5sum html_test.html | grep $SUM)"
+
+#if [ $? -eq 0 ]; then
+#echo "md5 = $SUM
+#Checksum correct"
+#fi

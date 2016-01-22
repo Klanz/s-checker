@@ -1,0 +1,26 @@
+#!/bin/bash
+
+option=
+algorithm=
+until [ "$option" = "q" ]; do
+	echo "Menu
+
+	1
+	2	
+	3
+
+	q"
+
+    	echo -n "Enter option: "
+    	read option
+   	echo ""
+
+   	case $option in
+
+	1) echo "option 1" ;;
+	2) echo "option 2" ;;
+	3) echo "option 3" ;;
+	q) exit 0 ;;
+	*) echo "input 1,2,3 or q" ;;
+	esac
+done
