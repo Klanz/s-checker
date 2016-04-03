@@ -6,9 +6,11 @@
 #
 # ©Copyright (C) 2015-2016 Albert Aparicio
 # TODO: Compare two files
+copyright_notice="schecker (S Checker) v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio"
 
 get_help(){
-echo "schecker (S Checker) v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio
+#echo "schecker (S Checker) v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio
+echo "$copyright_notice
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -61,8 +63,9 @@ Examples:
 
 usage()
 {
-    echo "schecker (S Checker) v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio
-
+    echo $copyright_notice
+#="schecker (S Checker) v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio
+echo "
 Usage: schecker [[[-m]|[-s1]|[-s2]|[-s5]|[-i]] [-f filename] [[-c checksum]|[-d device]]|[-h]]
 "
 }
@@ -125,7 +128,7 @@ show_data(){
 ███████║    ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗███████╗██║  ██║
 ╚══════╝     ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
                                                                     "
-	echo "S Checker v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio"
+	echo $copyright_notice
 }
 
 sum_data(){
