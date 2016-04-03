@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# v1.1.2
+# v1.2
 #	
 # S Checker - Multi-algorithm checksum checker and ISO against disk comparator
 #
 # ©Copyright (C) 2015-2016 Albert Aparicio
-copyright_notice="schecker (S Checker) v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio"
+copyright_notice="schecker (S Checker) v1.2 ©Copyright (C) 2015-2016 Albert Aparicio"
 
 get_help(){
 echo "$copyright_notice
