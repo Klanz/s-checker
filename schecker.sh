@@ -71,41 +71,45 @@ Usage: schecker [[[-m]|[-s1]|[-s2]|[-s5]|[-i]] [-f filename] [[-c checksum]|[-d 
 }
 
 md5_sum(){
-   if [ -n "$( md5sum $filename | grep $checksum )" ]; then
-     echo "<---Checksum Match--->"
-     exit 0
-   else
-     echo "!!--Checksum Mismatch--!!"
-     exit 0
-   fi
+#   if [ -n "$( md5sum $filename | grep $checksum )" ]; then
+	if [ $( md5sum $filename | cut -d " " -f 1 ) = $checksum ]; then
+		echo "<---Checksum Match--->"
+		exit 0
+	else
+		echo "!!--Checksum Mismatch--!!"
+		exit 0
+	fi
 }
 
 sha1_sum(){
-   if [ -n "$( sha1sum $filename | grep $checksum )" ]; then
-     echo "<---Checksum Match--->"
-     exit 0
-   else
-     echo "!!--Checksum Mismatch--!!"
-     exit 0
-   fi
+#   if [ -n "$( sha1sum $filename | grep $checksum )" ]; then
+	if [ $( sha1sum $filename | cut -d " " -f 1 ) = $checksum ]; then
+		echo "<---Checksum Match--->"
+		exit 0
+	else
+		echo "!!--Checksum Mismatch--!!"
+		exit 0
+	fi
 }
 sha256_sum(){
-   if [ -n "$( sha256sum $filename | grep $checksum )" ]; then
-     echo "<---Checksum Match--->"
-     exit 0
-   else
-     echo "!!--Checksum Mismatch--!!"
-     exit 0
-   fi
+   #if [ -n "$( sha256sum $filename | grep $checksum )" ]; then
+	if [ $( sha256sum $filename | cut -d " " -f 1 ) = $checksum ]; then
+		echo "<---Checksum Match--->"
+		exit 0
+	else
+		echo "!!--Checksum Mismatch--!!"
+		exit 0
+	fi
 }
 sha512_sum(){
-   if [ -n "$( sha512sum $filename | grep $checksum )" ]; then
-     echo "<---Checksum Match--->"
-     exit 0
-   else
-     echo "!!--Checksum Mismatch--!!"
-     exit 0
-   fi
+   #if [ -n "$( sha512sum $filename | grep $checksum )" ]; then
+	if [ $( sha512sum $filename | cut -d " " -f 1 ) = $checksum ]; then
+		echo "<---Checksum Match--->"
+		exit 0
+	else
+		echo "!!--Checksum Mismatch--!!"
+		exit 0
+	fi
 }
 iso_image(){
    if [ -z "$( cmp $device $filename  )" ]; then
