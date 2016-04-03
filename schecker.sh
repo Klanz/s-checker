@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# v1.1.1
+# v1.1.2
 #	
 # S Checker - Multi-algorithm checksum checker and ISO against disk comparator
 #
-# ©Copyright (C) 2015 Albert Aparicio
+# ©Copyright (C) 2015-2016 Albert Aparicio
 # TODO: Compare two files
 
 get_help(){
-echo "schecker (S Checker) v1.1.1 ©Copyright (C) 2015 Albert Aparicio
+echo "schecker (S Checker) v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,8 +23,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-S Checker source code available from albert.aparicio.isarn@gmail.com.
-Use PGP encryption on the emails, with public signature 0xE9920BEE.
+Source code available on GitHub <https://github.com/albertaparicio/s-checker>
 
 -------------------------------------------------------------------
 This program has two modes:
@@ -62,7 +61,7 @@ Examples:
 
 usage()
 {
-    echo "schecker (S Checker) v1.1.1 ©Copyright (C) 2015 Albert Aparicio
+    echo "schecker (S Checker) v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio
 
 Usage: schecker [[[-m]|[-s1]|[-s2]|[-s5]|[-i]] [-f filename] [[-c checksum]|[-d device]]|[-h]]
 "
@@ -126,14 +125,14 @@ show_data(){
 ███████║    ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗███████╗██║  ██║
 ╚══════╝     ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
                                                                     "
-	echo "S Checker v1.1.1 ©Copyright (C) 2015 Albert Aparicio"
+	echo "S Checker v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio"
 }
 
 sum_data(){
 	echo "
 Mode: Checksum checking
 
-Algorithm: $algorithm
+Algorithm: $mode
 File: $filename
 Checksum: $checksum
 
