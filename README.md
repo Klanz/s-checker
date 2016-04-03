@@ -9,9 +9,9 @@ S Checker allows you to easily check if a file of yours matches its provided che
 - Check ISO image from disk
 	
 ##How to get S Checker
-S Checker is available from the [**Releases**](https://github.com/albertaparicio/s-checker/releases) page in this GitHub repo.
+S Checker is available from the [**Releases**](https://github.com/albertaparicio/s-checker/releases) page in this GitHub repository.
 
-Currently it is only available as a Bash script or in binary version for x64 GNU/Linux systems.
+Currently it is only available as a Bash script or in binary version for x64 GNU/Linux systems (old versions).
 ##Usage
 S Checker is run from the command line, first specifying the algorithm or the program option, then inputting the file and then, the provided checksum or filename:
 
@@ -20,7 +20,7 @@ S Checker is run from the command line, first specifying the algorithm or the pr
 For full usage information, type 
 `schecker -h` or `schecker --help`
 ##License
-schecker (S Checker) ©Copyright (C) 2015 Albert Aparicio
+schecker (S Checker) ©Copyright (C) 2015-2016 Albert Aparicio
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
