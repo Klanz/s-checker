@@ -67,8 +67,10 @@ Usage: schecker [[[-m]|[-s1]|[-s2]|[-s5]|[-i]] [-f filename] [[-c checksum]|[-d 
 "
 }
 
-md5_sum(){
-	if [ $( md5sum $filename | cut -d " " -f 1 ) = $checksum ]; then
+compute_sum(){
+	algorithm=$1	
+
+	if [ $( $algorithm $filename | cut -d " " -f 1 ) = $checksum ]; then
 		echo "<---Checksum Match--->"
 		exit 0
 	else
@@ -77,33 +79,6 @@ md5_sum(){
 	fi
 }
 
-sha1_sum(){
-	if [ $( sha1sum $filename | cut -d " " -f 1 ) = $checksum ]; then
-		echo "<---Checksum Match--->"
-		exit 0
-	else
-		echo "!!--Checksum Mismatch--!!"
-		exit 0
-	fi
-}
-sha256_sum(){
-	if [ $( sha256sum $filename | cut -d " " -f 1 ) = $checksum ]; then
-		echo "<---Checksum Match--->"
-		exit 0
-	else
-		echo "!!--Checksum Mismatch--!!"
-		exit 0
-	fi
-}
-sha512_sum(){
-	if [ $( sha512sum $filename | cut -d " " -f 1 ) = $checksum ]; then
-		echo "<---Checksum Match--->"
-		exit 0
-	else
-		echo "!!--Checksum Mismatch--!!"
-		exit 0
-	fi
-}
 iso_image(){
    if [ -z "$( cmp $device $filename  )" ]; then
      echo "<---Disk Matched ISO--->"
@@ -113,7 +88,6 @@ iso_image(){
      exit 0
    fi
 }
-   
 
 show_data(){
 	clear
@@ -195,12 +169,12 @@ case $mode in
 
 	ISO ) show_data;iso_data;iso_image;;
 
-	MD5 ) show_data;sum_data;md5_sum;;
+	MD5 ) show_data;sum_data;compute_sum md5sum;;
 
-	SHA1 ) show_data;sum_data;sha1_sum;;
+	SHA1 ) show_data;sum_data;compute_sum sha1sum;;
 
-	SHA256 ) show_data;sum_data;sha256_sum;;
+	SHA256 ) show_data;sum_data;compute_sum sha256sum;;
 
-	SHA512 ) show_data;sum_data;sha512_sum;;
+	SHA512 ) show_data;sum_data;compute_sum sha512sum;;
 
 esac

@@ -1,4 +1,7 @@
 ### Gitignore
+# Tests folder
+tests/
+
 # vi Swap files
 *.swp
 
