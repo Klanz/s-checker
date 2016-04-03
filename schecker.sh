@@ -5,11 +5,9 @@
 # S Checker - Multi-algorithm checksum checker and ISO against disk comparator
 #
 # ©Copyright (C) 2015-2016 Albert Aparicio
-# TODO: Compare two files
 copyright_notice="schecker (S Checker) v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio"
 
 get_help(){
-#echo "schecker (S Checker) v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio
 echo "$copyright_notice
 
 This program is free software: you can redistribute it and/or modify
@@ -64,14 +62,12 @@ Examples:
 usage()
 {
     echo $copyright_notice
-#="schecker (S Checker) v1.1.2 ©Copyright (C) 2015-2016 Albert Aparicio
 echo "
 Usage: schecker [[[-m]|[-s1]|[-s2]|[-s5]|[-i]] [-f filename] [[-c checksum]|[-d device]]|[-h]]
 "
 }
 
 md5_sum(){
-#   if [ -n "$( md5sum $filename | grep $checksum )" ]; then
 	if [ $( md5sum $filename | cut -d " " -f 1 ) = $checksum ]; then
 		echo "<---Checksum Match--->"
 		exit 0
@@ -82,7 +78,6 @@ md5_sum(){
 }
 
 sha1_sum(){
-#   if [ -n "$( sha1sum $filename | grep $checksum )" ]; then
 	if [ $( sha1sum $filename | cut -d " " -f 1 ) = $checksum ]; then
 		echo "<---Checksum Match--->"
 		exit 0
@@ -92,7 +87,6 @@ sha1_sum(){
 	fi
 }
 sha256_sum(){
-   #if [ -n "$( sha256sum $filename | grep $checksum )" ]; then
 	if [ $( sha256sum $filename | cut -d " " -f 1 ) = $checksum ]; then
 		echo "<---Checksum Match--->"
 		exit 0
@@ -102,7 +96,6 @@ sha256_sum(){
 	fi
 }
 sha512_sum(){
-   #if [ -n "$( sha512sum $filename | grep $checksum )" ]; then
 	if [ $( sha512sum $filename | cut -d " " -f 1 ) = $checksum ]; then
 		echo "<---Checksum Match--->"
 		exit 0
