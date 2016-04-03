@@ -1,0 +1,9 @@
+### Gitignore
+# vi Swap files
+*.swp
+
+# Macintosh OS crap
+.DS_Store
+
+# GNU/Linux bak crap
+*~
